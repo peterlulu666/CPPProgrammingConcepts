@@ -32,7 +32,7 @@ int main() {
     int max = (int) ((sideA) + sideB);
     int min = (int) (fabs(sideA - sideB));
     // define the range inclusively
-    // min + 1 and max + 1 would make it exclusive of the top and bottom value
+    // min + 1 and max - 1 would make it exclusive of the top and bottom value
     std::uniform_int_distribution<> distribution(min + 1, max - 1);
     double sideC;
     sideC = distribution(generate);
