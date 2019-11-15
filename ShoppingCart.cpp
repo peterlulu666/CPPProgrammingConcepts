@@ -88,10 +88,10 @@ int main() {
     // the nearest dollar amount.
     double cents = subtotalShippingProductTax - (int) subtotalShippingProductTax;
     double donationAmount = 0;
+    char choose = 0;
     if (cents != 0) {
         cout << "Would you like to make a donation? (y/n) \n";
         // Character to upper case
-        char choose;
         cin >> choose;
         choose = (char) toupper(choose);
         if (choose == 'Y') {
@@ -103,8 +103,8 @@ int main() {
     // Finally, compute the grand total by adding
     // the subtotal from #5 with the donation amount from #6.
     // Display this final amount to the user.
-    double grandTotal = subtotalShippingProductTax + donationAmount;
-    cout << grandTotal;
+    float grandTotal = subtotalShippingProductTax + donationAmount;
+    cout << "Thank you for your order. Your total is " << grandTotal << ".";
     // Each step of the calculation will be printed
     // to an external file named receipt.txt.
     // The receipt MUST match the following formatting with example amounts
@@ -125,10 +125,36 @@ int main() {
     //=============================
     //Grand Total:       $    39.00
     //=============================
-
+    // When formatting the receipt, make sure the following rules are followed:
+    // All dollar amounts are displayed to two decimals.
+    // All dollar amounts are right aligned with the decimal point aligned.
+    // You can assume all amounts will be less than $100,000.
+    // Sales Tax Rate is listed as a percentage.
+    // You can assume the rate will be less than 100% and greater than 0%.
+    // If the user wants to make a donation, then display the donation amount. Otherwise, do not.
+    // A second example is shown below.
+    ofstream receipt;
+    receipt.open("/Users/YanzhiWang/CLionProjects/CPPProgrammingConcepts/receipt.txt");
+    receipt << "-----------------------------\n";
+    receipt << "Sprockets-R-Us Order Receipt\n";
+    receipt << "-----------------------------\n";
+    receipt << "Price Per Unit:    $     " << price_per_individual_unit << "\n";
+    receipt << "Quantity Ordered:        " << order << "\n";
+    receipt << "Unit Subtotal:     $     " << productTotal << "\n";
+    receipt << "-----------------------------\n";
+    receipt << "Shipping Fee:      $     " << shippingFee << "\n";
+    receipt << "-----------------------------\n";
+    receipt << "Sales Tax ( 6.75%):$     " << salesTax << "\n";
+    receipt << "-----------------------------\n";
+    receipt << "Donation?                " << choose << "\n";
+    receipt << "Donation Amount:   $     " << donationAmount << "\n";
+    receipt << "=============================\n";
+    receipt << "Grand Total:       $     " << grandTotal << "\n";
+    receipt << "=============================\n";
 
 
 }
+
 
 
 
