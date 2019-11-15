@@ -19,6 +19,7 @@ int main() {
     // when the user accidently types a lower case letter.
     // Now the Human Player can enter either R or r for rock, P or p for
     // paper, and S or s for scissors.
+    // String to upper case
     transform(str.begin(), str.end(), str.begin(), ::toupper);
     char choose = str.at(0);
     int playerChoose = 0;

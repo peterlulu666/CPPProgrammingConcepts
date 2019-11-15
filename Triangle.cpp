@@ -108,7 +108,7 @@ int main() {
     double semiPerimeter = perimeter / 2;
     double area = pow(semiPerimeter * (semiPerimeter - sideA) * (semiPerimeter - sideB) * (semiPerimeter - sideC), 0.5);
     if (isTriangle) {
-        cout << "The perimeter is " << perimeter << " and the area is " << area;        
+        cout << "The perimeter is " << perimeter << " and the area is " << area;
     }
 
 }
