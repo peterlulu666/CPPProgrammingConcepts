@@ -105,6 +105,28 @@ int main() {
     // Display this final amount to the user.
     double grandTotal = subtotalShippingProductTax + donationAmount;
     cout << grandTotal;
+    // Each step of the calculation will be printed
+    // to an external file named receipt.txt.
+    // The receipt MUST match the following formatting with example amounts
+    // based off of the public_product.txt file.
+    //-----------------------------
+    //Sprockets-R-Us Order Receipt
+    //-----------------------------
+    //Price Per Unit:    $     1.99
+    //Quantity Ordered:           5
+    //Unit Subtotal:     $     9.95
+    //-----------------------------
+    //Shipping Fee:      $    25.99
+    //-----------------------------
+    //Sales Tax ( 6.75%):$     2.43
+    //-----------------------------
+    //Donation?                   Y
+    //Donation Amount:   $     0.63
+    //=============================
+    //Grand Total:       $    39.00
+    //=============================
+
+
 
 }
 
