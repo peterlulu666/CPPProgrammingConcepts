@@ -2,6 +2,7 @@
 #include <cmath>
 #include <random>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -135,21 +136,23 @@ int main() {
     // A second example is shown below.
     ofstream receipt;
     receipt.open("/Users/YanzhiWang/CLionProjects/CPPProgrammingConcepts/receipt.txt");
+    // All dollar amounts are displayed to two decimals.
+    receipt << fixed << setprecision(2);
     receipt << "-----------------------------\n";
     receipt << "Sprockets-R-Us Order Receipt\n";
     receipt << "-----------------------------\n";
-    receipt << "Price Per Unit:    $     " << price_per_individual_unit << "\n";
-    receipt << "Quantity Ordered:        " << order << "\n";
-    receipt << "Unit Subtotal:     $     " << productTotal << "\n";
+    receipt << "Price Per Unit:    $" << setw(8) << price_per_individual_unit << "\n";
+    receipt << "Quantity Ordered:" << setw(11) << order << "\n";
+    receipt << "Unit Subtotal:     $" << setw(8) << productTotal << "\n";
     receipt << "-----------------------------\n";
-    receipt << "Shipping Fee:      $     " << shippingFee << "\n";
+    receipt << "Shipping Fee:      $" << setw(8) << shippingFee << "\n";
     receipt << "-----------------------------\n";
-    receipt << "Sales Tax ( 6.75%):$     " << salesTax << "\n";
+    receipt << "Sales Tax ( 6.75%):$" << setw(8) << salesTax << "\n";
     receipt << "-----------------------------\n";
-    receipt << "Donation?                " << choose << "\n";
-    receipt << "Donation Amount:   $     " << donationAmount << "\n";
+    receipt << "Donation?" << setw(19) << choose << "\n";
+    receipt << "Donation Amount:   $" << setw(8) << donationAmount << "\n";
     receipt << "=============================\n";
-    receipt << "Grand Total:       $     " << grandTotal << "\n";
+    receipt << "Grand Total:       $" << setw(8) << grandTotal << "\n";
     receipt << "=============================\n";
 
 
