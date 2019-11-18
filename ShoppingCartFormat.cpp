@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iomanip>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -135,6 +136,49 @@ int main() {
     // You can assume the rate will be less than 100% and greater than 0%.
     // If the user wants to make a donation, then display the donation amount. Otherwise, do not.
     // A second example is shown below.
+    // For extra credit, improve the formatting of the receipt by having the dollar sign next to the amount.
+    std::string price_per_individual_unitStr;
+    std::string productTotalStr;
+    std::string shippingFeeStr;
+    std::string salesTaxStr;
+    std::string donationAmountStr;
+    std::string grandTotalStr;
+
+    std::stringstream price_per_individual_unit_stream;
+    price_per_individual_unit_stream.setf(std::ios::fixed);
+    price_per_individual_unit_stream.precision(2);
+    price_per_individual_unit_stream << price_per_individual_unit;
+    price_per_individual_unitStr = price_per_individual_unit_stream.str();
+
+    std::stringstream productTotal_stream;
+    productTotal_stream.setf(std::ios::fixed);
+    productTotal_stream.precision(2);
+    productTotal_stream << productTotal;
+    productTotalStr = productTotal_stream.str();
+
+    std::stringstream shippingFee_stream;
+    shippingFee_stream.setf(std::ios::fixed);
+    shippingFee_stream.precision(2);
+    shippingFee_stream << grandTotal;
+    shippingFeeStr = shippingFee_stream.str();
+
+    std::stringstream salesTax_stream;
+    salesTax_stream.setf(std::ios::fixed);
+    salesTax_stream.precision(2);
+    salesTax_stream << grandTotal;
+    salesTaxStr = salesTax_stream.str();
+
+    std::stringstream donationAmount_stream;
+    donationAmount_stream.setf(std::ios::fixed);
+    donationAmount_stream.precision(2);
+    donationAmount_stream << grandTotal;
+    donationAmountStr = donationAmount_stream.str();
+
+    std::stringstream grandTotal_stream;
+    grandTotal_stream.setf(std::ios::fixed);
+    grandTotal_stream.precision(2);
+    grandTotal_stream << grandTotal;
+    grandTotalStr = grandTotal_stream.str();
     ofstream receipt;
     receipt.open("/Users/YanzhiWang/CLionProjects/CPPProgrammingConcepts/receipt.txt");
     // All dollar amounts are displayed to two decimals.
@@ -142,18 +186,18 @@ int main() {
     receipt << "-----------------------------\n";
     receipt << "Sprockets-R-Us Order Receipt\n";
     receipt << "-----------------------------\n";
-    receipt << "Price Per Unit:    $" << setw(8) << price_per_individual_unit << "\n";
-    receipt << "Quantity Ordered:" << setw(11) << order << "\n";
-    receipt << "Unit Subtotal:     $" << setw(8) << productTotal << "\n";
+    receipt << "Price Per Unit:    " << setw(10) << string("$") + string(price_per_individual_unitStr) << "\n";
+    receipt << "Quantity Ordered:" << setw(12) << order << "\n";
+    receipt << "Unit Subtotal:     " << setw(10) << string("$") + string(productTotalStr) << "\n";
     receipt << "-----------------------------\n";
-    receipt << "Shipping Fee:      $" << setw(8) << shippingFee << "\n";
+    receipt << "Shipping Fee:      " << setw(10) << string("$") + string(shippingFeeStr) << "\n";
     receipt << "-----------------------------\n";
-    receipt << "Sales Tax ( 6.75%):$" << setw(8) << salesTax << "\n";
+    receipt << "Sales Tax ( 6.75%):" << setw(10) << string("$") + string(salesTaxStr) << "\n";
     receipt << "-----------------------------\n";
-    receipt << "Donation?" << setw(19) << choose << "\n";
-    receipt << "Donation Amount:   $" << setw(8) << donationAmount << "\n";
+    receipt << "Donation?" << setw(20) << choose << "\n";
+    receipt << "Donation Amount:   " << setw(10) << string("$") + string(donationAmountStr) << "\n";
     receipt << "=============================\n";
-    receipt << "Grand Total:       $" << setw(8) << grandTotal << "\n";
+    receipt << "Grand Total:       " << setw(10) << string("$") + string(grandTotalStr) << "\n";
     receipt << "=============================\n";
 
 
