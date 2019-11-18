@@ -137,6 +137,7 @@ int main() {
     // If the user wants to make a donation, then display the donation amount. Otherwise, do not.
     // A second example is shown below.
     // For extra credit, improve the formatting of the receipt by having the dollar sign next to the amount.
+    // Format double number to two decimals.
     std::string price_per_individual_unitStr;
     std::string productTotalStr;
     std::string shippingFeeStr;
