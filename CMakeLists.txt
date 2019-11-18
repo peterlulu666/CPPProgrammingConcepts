@@ -3,4 +3,4 @@ project(Programming_Concepts)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Programming_Concepts test.cpp)
+add_executable(Programming_Concepts ShoppingCartFormat.cpp)
